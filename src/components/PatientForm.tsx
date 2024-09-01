@@ -25,7 +25,10 @@ export const PatientForm = () => {
     const registerPatient = (data: DraftPatient) => {
         if (activeId) {
             updatePatient(data)
-            toast.success('Paciente Actualizado')
+            toast('Paciente Actualizado', {
+                type: 'success',
+                autoClose: 1000
+            })
         } else {
             addPatient(data)
             toast.success('Paciente Añadido')
