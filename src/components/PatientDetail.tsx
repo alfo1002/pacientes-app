@@ -11,6 +11,9 @@ export const PatientDetail = ({ patient }: PatientDetailProps) => {
 
     const deletePatient = usePatientStore(state => state.deletePatient)
 
+    const { getPatientById } = usePatientStore()
+
+
     return (
         <div className="mx-5 my-10 px-5 py-10 bg-white shadow-sm rounded-lg">
             <PatientDetailItem label="Id" data={patient.id} />
@@ -20,10 +23,12 @@ export const PatientDetail = ({ patient }: PatientDetailProps) => {
             <PatientDetailItem label="Fecha" data={patient.date.toString()} />
             <PatientDetailItem label="Síntomas" data={patient.symptoms} />
 
-            <div className="flex justify-between mt-10">
+            <div className="flex flex-col lg:flex-row gap-3 justify-between mt-10">
                 <button
                     type="button"
-                    className="py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold uppercase rounded-lg">
+                    className="py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold uppercase rounded-lg"
+                    onClick={() => getPatientById(patient.id)}
+                >
                     Editar
                 </button>
                 <button
