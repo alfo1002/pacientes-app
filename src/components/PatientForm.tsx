@@ -7,7 +7,7 @@ import { useEffect } from "react"
 export const PatientForm = () => {
 
     //const addPatient = usePatientStore(state => state.addPatient)  //dos opciones para obtener la función addPatient
-    const { addPatient, activeId, patients } = usePatientStore()
+    const { addPatient, activeId, patients, updatePatient } = usePatientStore()
     const { register, handleSubmit, setValue, formState: { errors }, reset } = useForm<DraftPatient>()
 
     useEffect(() => {
@@ -22,7 +22,12 @@ export const PatientForm = () => {
     }, [activeId])
 
     const registerPatient = (data: DraftPatient) => {
-        addPatient(data)
+        if (activeId) {
+            updatePatient(data)
+        } else {
+            addPatient(data)
+        }
+
         reset()
     }
 
