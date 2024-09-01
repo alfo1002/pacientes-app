@@ -7,10 +7,11 @@ export const PatientForm = () => {
 
     //const addPatient = usePatientStore(state => state.addPatient)  //dos opciones para obtener la función addPatient
     const { addPatient } = usePatientStore()
-    const { register, handleSubmit, formState: { errors } } = useForm<DraftPatient>()
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<DraftPatient>()
 
     const registerPatient = (data: DraftPatient) => {
         addPatient(data)
+        reset()
     }
 
     return (
