@@ -53,8 +53,8 @@ export const usePatientStore = create<PatientState>()(
                 ))
                 set({ activeId: '' })
             }
-        })), {
-        name: 'patient-storage',
-        storage: createJSONStorage(() => localStorage), //DEFAULT
-    }
-    ))
+        }), {
+            name: 'patient-storage',
+            storage: createJSONStorage(() => localStorage), //DEFAULT
+        }
+        )))
